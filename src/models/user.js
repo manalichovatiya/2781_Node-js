@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
         },
         password : {
             type : String,
-        },  
+        },
         is_active : {
             type : Boolean,
             default : true,
@@ -28,4 +28,4 @@ const userSchema = new mongoose.Schema(
 );
 
 const Users = mongoose.model("Users" , userSchema);
-model.exports = Users;
+module.exports = Users;
