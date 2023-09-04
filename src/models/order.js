@@ -1,24 +1,26 @@
 const mongoose = require("mongoose");
-const userSchema = new mongoose.Schema(
+const orderSchema = new mongoose.Schema(
     {
-        full_name : {
-            type : String,
-            trim : true,
-        },
-        email : {
-            type : String,
-            trim : true,
-        },
-        password : {
-            type : String,
-        },
-        address : {
-            type : String,
-            trim : true,
-        },
-        phone_number : {
+        ammount : {
             type : Number,
             trim : true,
+        },
+        order_address : {
+            type : String,
+            trim : true,
+        },
+        order_email : {
+            type : String,
+            trim : true,
+        },
+        order_date : {
+            type : String,
+            trim : true,
+        },
+        // ref user id
+        User_id : {
+            type : mongoose.Types.ObjectId,
+            ref : "Users"
         },
         is_active : {
             type : Boolean,
@@ -30,6 +32,5 @@ const userSchema = new mongoose.Schema(
         versionkey: false,
     }
 );
-
-const Users = mongoose.model("Users" , userSchema);
-module.exports = Users;
+const Order = mongoose.model("Order",orderSchema);
+module.exports = Order;
