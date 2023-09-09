@@ -7,6 +7,7 @@ const createOrder = {
     order_address: Joi.string().required().trim(),
     order_email: Joi.string().required().trim(),
     order_date: Joi.string().required().trim(),
+    User_id: Joi.string().required(),
   }),
 };
 

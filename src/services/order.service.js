@@ -8,8 +8,8 @@ const createOrder = async (reqBody) => {
 // Get Order list
 const getOrderList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
-//   return Order.find();
-  return Order.find({$or:[{is_active:false}]});
+  return Order.find().populate("User_id");
+  // return Order.find({$or:[{is_active:false}]});
 };
 
 // Get Order details by id
