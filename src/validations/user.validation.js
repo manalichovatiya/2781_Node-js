@@ -10,7 +10,15 @@ const createUser = {
     phone_number: Joi.number().required(),
   }),
 };
+const sendMail = {
+  body : Joi.object().keys({
+    email : Joi.string().required().trim(),
+    subject : Joi.string().required().trim(),
+    text : Joi.string().required().trim(),
+  })
+}
 
 module.exports = {
-    createUser
+    createUser,
+    sendMail
 }

@@ -1,10 +1,10 @@
-const { userService } = require("../services");
+const { userService , emailService } = require("../services");
 
 /** create user */
 const createUser = async (req, res) => {
   try {
     const reqBody = req.body;
-  const user = await userService.createUser(reqBody);
+    const user = await userService.createUser(reqBody);
     if (!user) {
       throw new Error("Something went wrong, please try again or later!");
     }
@@ -21,8 +21,6 @@ const createUser = async (req, res) => {
 /** Get user list */
 const getUserList = async (req, res) => {
   try {
-    const { search, ...options } = req.query;
-    let filter = {};
     const getList = await userService.getUserList(filter, options);
 
     res.status(200).json({
@@ -91,10 +89,32 @@ const deleteUser = async (req, res) => {
   }
 };
 
+/** send mail to reqested email*/
+const sendMail = async (req,res) => {
+  try{
+    const reqBody = req.body;
+    const sendEmail = await emailService.sendMail(
+      reqBody.email,
+      reqBody.subject,
+      reqBody.text
+      );
+      console.log( reqBody.email , " reqBody.email")
+    if (!sendEmail) {
+      throw new Error("Something went wrong, please try again or later.");
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "Email send successfully!" });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
+
 module.exports = {
   createUser,
   getUserList,
   getUserDetails,
   updateDetails,
   deleteUser,
+  sendMail
 };

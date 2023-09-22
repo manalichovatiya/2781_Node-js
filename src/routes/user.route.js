@@ -30,6 +30,13 @@ router.put(
   userController.updateDetails
 );
 
+/** for sending mail */
+router.post(
+  "/send-mail",
+  validate(userValidation.sendMail),
+  userController.sendMail
+);
+
 /** Delete user */
 router.delete(
   "/delete-user/:userId",
