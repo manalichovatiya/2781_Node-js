@@ -5,3 +5,4 @@ module.exports.Product = require("./product");
 module.exports.Users = require("./user");
 module.exports.Order = require("./order");
 module.exports.OrderDetails = require("./orderdetails");
+module.exports.Blog = require("./blog");

@@ -6,6 +6,7 @@ const orderRoute = require("./order.route");
 const orderdetailsRoute = require("./orderdetails.route");
 const productRoute = require("./product.route");
 const userRoute = require("./user.route");
+const blogRoute = require("./blog.route");
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.use("/order" , orderRoute);
 router.use("/orderdetails" , orderdetailsRoute);
 router.use("/product" , productRoute);
 router.use("/user" , userRoute);
+router.use("/blog" , blogRoute);
 
 module.exports = router;
